@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+     <title >JNTUK percentage calculator </title>  
+  </head>
+  <body style="background-color:LightCyan;">
+  	<div class="container" id="main">
+  <h1 align = center style="bg-color:red" >Jntuk Percentage calculator - R16 Regulation</h1>
+  <p><h4>Points to remember:</h4></p> 
+  <ol>
+    <li>Enter the subject grade into corresponding value.</li>
+    <li>Grades corresponding values:</li>
+    <ul>
+      <li>Grade 'O'=10</li>
+      <li>Grade 'S'=9</li>
+      <li>Grade 'A'=8</li>
+      <li>Grade 'B'=7</li>
+      <li>Grade 'C'=6</li>
+      <li>Grade 'D'=5</li>
+      <li>Grade 'F'=0</li>
+    </ul>
+  </ol>
+<form  method="POST" action="?">
+<p>
+<lable>Subject 1:</lable><input type="text" class='form-control data_input' id="1" >
+<lable>Subject 2:</lable><input type="text" class='form-control data_input' id="1" >
+<lable>Subject 3:</lable><input type="text" class='form-control data_input' id="1" >
+<lable>Subject 4:</lable><input type="text" class='form-control data_input' id="1" >
+<lable>Subject 5:</lable><input type="text" class='form-control data_input' id="1" >
+<lable>Subject 6:</lable><input type="text" class='form-control data_input' id="1" >
+<lable>Lab 1:</lable><input type="text" class='form-control data_input' id="2" >
+<lable>Lab 2:</lable><input type="text" class='form-control data_input' id="2" >
+<lable>Lab 3:</lable><input type="text" class='form-control data_input' id="2" ><br>
+<button type='button' class="btn btn-primary" onclick="get_cgpa()">Submit</button>
+</p>
+</form>
+</div>
+
+<div class="container border p-4">
+	<h4>results</h4>
+	<h5>YOUR CGPA IS:</h5>
+	<p id="results"></p>
+</div>
+    <!-- JavaScript -->
+      
+    
+    <script type="text/javascript">
+
+    function get_cgpa(){
+    var res1=0,res2=0,count1=0,count2=0;
+    var elements = document.getElementsByTagName("input")
+	for (var i = 0; i < elements.length; i++) {
+    	if(elements[i].value == "")
+        	elements[i].value =0
+   		if(elements[i].id=="1")
+    		res1+=Number(elements[i].value)
+    	if(elements[i].id=="2")
+    		res2+=Number(elements[i].value)
+    	if(elements[i].id=="1" && elements[i].value!=0)
+    		count1++
+    	if(elements[i].id=="2" && elements[i].value!=0)
+    		count2++
+	}
+
+   //console.log(res1*3+res2*2)
+   var total_credits=count1*3+count2*2
+   var perc=((res1*3+res2*2)/total_credits).toFixed(2)
+   //console.log(perc)
+   document.getElementById("results").innerHTML=perc;
+    }
+
+    </script>
+
+
+  </body>
+</html>
